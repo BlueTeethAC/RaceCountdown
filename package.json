@@ -5,7 +5,7 @@
   "type": "module",
   "main": "electron-main.cjs",
 
-  "description": "3D倒计时桌面应用",
+  "description": "倒计时桌面应用",
   "author": "Your Name <your.email@example.com>",
 
   "scripts": {
@@ -45,7 +45,7 @@
   },
   "build": {
     "appId": "com.example.countdown",
-    "productName": "3D倒计时应用",
+    "productName": "倒计时应用",
     "directories": {
       "output": "release"
     },
