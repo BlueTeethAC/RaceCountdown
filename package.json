@@ -1,0 +1,75 @@
+{
+  "name": "project_template_react",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "main": "electron-main.cjs",
+
+  "description": "3D倒计时桌面应用",
+  "author": "Your Name <your.email@example.com>",
+
+  "scripts": {
+    "dev:client": "vite --host --port 3000",
+    "dev": "npm run dev:client",
+    "dev:electron": "vite build --outDir resources/app/dist/static && electron .",
+    "build:client": "vite build --outDir dist/static --base=./",
+    "build": "rm -rf resources/app && npm run build:client && mkdir -p resources/app && cp -r dist resources/app && cp package.json resources/app && touch resources/app/build.flag",
+    "build:electron": "npm run build:client && electron-builder --dir",
+    "build:all": "npm run build:client && npm run build:electron",
+    "start": "electron ."
+  },
+
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.9.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.3.0",
+    "recharts": "^2.15.1",
+    "sonner": "^2.0.2",
+    "tailwind-merge": "^3.0.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.12.1",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "build": {
+    "appId": "com.example.countdown",
+    "productName": "3D倒计时应用",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron-main.cjs"
+    ],
+    "extraResources": [
+      {
+        "from": "electron-main.cjs",
+        "to": "app/electron-main.cjs"
+      }
+    ],
+    "asar": false,
+    "nodeGypRebuild": false,
+    "npmRebuild": false,
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
